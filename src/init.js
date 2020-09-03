@@ -6,6 +6,14 @@ var c = a.getContext("2d"),
 
   player, mouse_x, mouse_y, left, right, jump,
 
+  text_input = "",
+
+  prompt_line = "> ",
+
+  start = 0,
+
+  elapsed = 0,
+
   friction = 0.9,
 
   grav = 0.4,
@@ -68,6 +76,13 @@ document.onkeydown = e => {
     left = true;
   if (e.key == "ArrowUp")
     jump = true;
+
+  // terminal input
+  if (!terminal_active) return;
+
+  if (e.key == "Enter")
+    terminal_execute();
+
 }
 
 document.onkeyup = e => { 
@@ -77,7 +92,18 @@ document.onkeyup = e => {
     left = false;
   if (e.key == "ArrowUp")
     jump = false;
+
+  // terminal input
+  if (!terminal_active) return;
+
+  if (e.keyCode >= 48 && e.keyCode <= 90 || e.key == " " || e.key == "_") {
+    text_input += e.key;
+  } else if (e.key == "Backspace" || e.key == "Delete") {
+    text_input = text_input.slice(0, -1);
+  }
+
 };
+
 
 // FPS Calculator 
 (function (){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})();

@@ -2,11 +2,15 @@ var pad_l = 20;
 var pad_t = 30;
 
 var terminal_lines = [
-  "Twas brillig and the slithy tove",
-  "Did gyre and gimbal in the wabe.",
-  "All mimsy were the borogoves",
-  "And the momeraths outgrabe.",
+  "load platform_1",
+  "success",
+  "load platform_2",
+  "Error: failed to load platform_2",
+  "load platform_3",
+  "success",
 ];
+
+var max_terminal_lines = 22;
 
 function terminalUpdate() {
   drawTerminal();
@@ -24,15 +28,65 @@ function drawTerminal() {
   c.strokeRect(x, y, w, h);
 
   //c.fillStyle = "#450EACEA";
-  c.fillStyle = "#09080FEA";
+  c.fillStyle = "#111A15EA";
   c.fillRect(x, y, w, h);
 
-  // draw text
-  c.fillStyle = "#9B69FF";
+  // draw text history
+  c.fillStyle = "#0AFF0E";
   c.font = '16px monospace';
 
   for (i=0; i<terminal_lines.length; i++) {
-    c.fillText(terminal_lines[i], x + pad_l, y + pad_t + (i * 20) );
+    c.fillText(terminal_lines[i].toUpperCase(), x + pad_l, y + pad_t + (i * 20) );
+  }
+
+  // draw prompt & user input
+  prompt_line = "> " + text_input;
+  c.fillText(prompt_line, x + pad_l, y + h - 20);
+
+  if ( ~~(elapsed / 500) % 2 == 0 ) { 
+    c.fillRect(x + pad_l + c.measureText(prompt_line).width, y + h - 33, 12, 16);
   }
 
 }
+
+function terminal_execute() {
+  terminal_write(text_input);
+
+  var args = text_input.toLowerCase().split(" ");
+
+  text_input = "";
+
+  if (args[0] != "load") {
+    terminal_write("Error: Unknown command " + args[0]);
+    return;
+  }
+  
+  if (args[1] != "platform_2") {
+    terminal_write("Error: failed to load " + args[1]);
+    return;
+  }
+
+  terminal_write("success");
+
+}
+
+function terminal_write(s) {
+  terminal_lines.push(s);
+  if (terminal_lines.length > max_terminal_lines) {
+    terminal_lines = terminal_lines.slice(1);    
+  }
+}
+
+//function terminalListenDown(e) {
+//}
+
+//function terminalListenUp(e) {
+  //if (!terminal_active) return;
+
+  //if (e.keyCode >= 97 && e.keyCode <= 122) {
+    //text_input += e.key;
+  //} else if (e.key == "BACKSPACE" || e.key == "DELETE") {
+    //text_input = text_input.slice(0, -1);
+  //}
+//}
+

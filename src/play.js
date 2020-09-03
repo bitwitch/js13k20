@@ -1,4 +1,7 @@
-function loop() {
+function loop(t) {
+  if (!start) start = t;
+  elapsed = t - start;
+
   if(!quit_game) {
     requestAnimationFrame(loop); 
   }
