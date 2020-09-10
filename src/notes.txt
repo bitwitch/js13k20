@@ -1,0 +1,33 @@
+
+
+Elevator pitch:
+A platformer/puzzle game where you solve levels by interacting with terminals
+and hacking the space around you in order to reach an exit.
+
+
+
+Freeflowing ideas about this game:
+- It takes place in cyberspace, maybe in some sort of maintenance tunnel which
+  explains why there are terminals everywhere that allow you some level of
+  access to procedures that control the cyberspace around you
+
+- I want to explore some meta concepts. The commands the player runs in the
+  terminals will run gamecode that affects the game itself
+
+- Its also sort of meta in the sense that the player character is exposed to
+  some sense of the creation of the world around them
+
+- An important aspect of the puzzle is the last output on the terminal, it may
+  show Errors or maybe just information about the last tasks performed. All of
+  this information is useful to the player for figuring out what they are
+  capable of with the terminal. They can combine this 'last output' information
+  with their own creative ideas in order to solve the level's puzzle and reach
+  the exit.
+
+
+
+
+Within terminals, you will be able to:
+- See the last output from the system (this can hint at how to solve the level.
+- enter commands with arguments that execute procedures altering the game world
+- be able to run actual gamecode procedures at runtime using the terminal

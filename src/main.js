@@ -1,11 +1,9 @@
 onload = () => {
 
-
-
-
 // load level
 // if there is a level hash, play it 
-//level_data = load_level(decodeURIComponent(location.hash.slice(1)));
+//level_data = load_level_hash(decodeURIComponent(location.hash.slice(1)));
+
 level_data = load_level(levels[0]);
 
 player = new Player();
