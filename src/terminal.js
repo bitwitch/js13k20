@@ -4,8 +4,8 @@ var pad_t = 30;
 var terminal_lines = [
   "load platform_1",
   "success",
-  "load platform_2",
-  "Error: failed to load platform_2",
+  "load platxrfmor_2",
+  "Error: 404 Not Found: platxrfmor_2",
   "load platform_3",
   "success",
 ];
@@ -56,16 +56,24 @@ function terminal_execute() {
 
   text_input = "";
 
+  if (args[0] == "help") {
+    terminal_write("");
+    terminal_write("Commands:");
+    terminal_write("load <platform_name>    loads a platform");
+    return;
+  }
+
   if (args[0] != "load") {
     terminal_write("Error: Unknown command " + args[0]);
     return;
   }
   
   if (args[1] != "platform_2") {
-    terminal_write("Error: failed to load " + args[1]);
+    terminal_write("Error: 404 Not Found: " + args[1]);
     return;
   }
 
+  current_level = 1;
   terminal_write("success");
 
 }

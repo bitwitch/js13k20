@@ -5,6 +5,8 @@ onload = () => {
 //level_data = load_level_hash(decodeURIComponent(location.hash.slice(1)));
 
 level_data = load_level(levels[0]);
+level_data_1 = load_level(levels[1]);
+levels_data = [level_data, level_data_1];
 
 player = new Player();
 

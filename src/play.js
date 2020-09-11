@@ -6,7 +6,7 @@ function loop(t) {
     requestAnimationFrame(loop); 
   }
 
-  draw_level(level_data);
+  draw_level(levels_data[current_level]);
   player.update(); // draws player also
 
   if (terminal_active) {
@@ -81,6 +81,8 @@ function load_level(str) {
 
 
 function tileAt (x, y) {
+  var level_data = levels_data[current_level]; // TEMP DELETE ME!!!
+
   if(!level_data.tiles[~~(y / 32)]){
     return 0;
   }
